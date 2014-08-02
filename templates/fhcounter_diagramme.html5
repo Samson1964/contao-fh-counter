@@ -1,0 +1,142 @@
+<div class="fhcounter_diagramme <?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="clear:both; <?php echo $this->style; ?>"<?php endif; ?>>
+
+	<?php if ($this->headline): ?>
+		<<?php echo $this->hl; ?>><?php echo $this->headline; ?></<?php echo $this->hl; ?>>
+	<?php endif; ?>
+
+	<?php if ($this->ViewCounterinfo): ?>
+		<div>
+			<ul>
+				<li>Zählerquelle: <b><?php echo $this->CounterSource; ?></b></li>
+				<li>ID der Quelle: <b><?php echo $this->CounterPid; ?></b></li>
+				<li>Erste Zählung: <b><?php echo date("d.m.Y H:i",$this->CounterStarttime); ?></b></li>
+				<li>Gesamtzugriffe: <b><?php echo $this->CounterTotalhits; ?></b></li>
+				<li>Letzte Zählung: <b><?php echo date("d.m.Y H:i",$this->CounterLastcounting); ?></b></li>
+				<li>Letzter Besucher: <b><?php echo $this->CounterLastip; ?></b></li>
+				<li>Besucher online: <b><?php echo $this->CounterOnline; ?></b></li>
+			</ul>
+		</div>
+	<?php endif; ?>
+
+	<?php if ($this->ViewDiagrams): ?>
+		<link href="system/modules/fh-counter/assets/flot/flot.css" rel="stylesheet" type="text/css">
+		<script language="javascript" type="text/javascript" src="system/modules/fh-counter/assets/flot/jquery.flot.min.js"></script>
+		<script type="text/javascript">
+
+		(function($) {
+			$(document).ready(function() {
+
+				// Stundenstatistik
+				var series1 = {
+						data: <?php echo $this->CounterHoursData; ?>,
+						lines: {show: false},
+						color: "#0000ff",
+						bars: {show: true, barWidth: 0.5, align:'center', fill: 0.7 }
+					}
+
+				somePlot1 = $.plot("#CounterHoursData", [series1], {
+					xaxis: {
+						ticks: <?php echo $this->CounterHoursTicks; ?>
+					},
+					yaxis: { tickDecimals: 0, min: 0 },
+					grid: { borderColor: "#B5B5B5" }
+				});
+
+				var ctx = somePlot1.getCanvas().getContext("2d");
+				var data = somePlot1.getData()[0].data;
+				var xaxis = somePlot1.getXAxes()[0];
+				var yaxis = somePlot1.getYAxes()[0];
+				var offset = somePlot1.getPlotOffset();
+				ctx.font = "9px 'Verdana'";
+				ctx.fillStyle = "black";
+				for (var i = 0; i < data.length; i++){
+					var text = data[i][1] + '';
+					var metrics = ctx.measureText(text);
+					var xPos = (xaxis.p2c(data[i][0])+offset.left) - metrics.width/2;
+					var yPos = yaxis.p2c(data[i][1]) + offset.top - 5;
+					ctx.fillText(text, xPos, yPos);
+				}
+
+				// Tagesstatistik
+				var series2 = {
+						data: <?php echo $this->CounterDaysData; ?>,
+						lines: {show: false},
+						color: "#8A0045",
+						bars: {show: true, barWidth: 0.5, align:'center', fill: 0.7 }
+					}
+
+				somePlot2 = $.plot("#CounterDaysData", [series2], {
+					xaxis: {
+						ticks: <?php echo $this->CounterDaysTicks; ?>
+					},
+					yaxis: { tickDecimals: 0, min: 0 },
+					grid: { borderColor: "#B5B5B5" }
+				});
+
+				var ctx = somePlot2.getCanvas().getContext("2d");
+				var data = somePlot2.getData()[0].data;
+				var xaxis = somePlot2.getXAxes()[0];
+				var yaxis = somePlot2.getYAxes()[0];
+				var offset = somePlot2.getPlotOffset();
+				ctx.font = "8px 'Verdana'";
+				ctx.fillStyle = "black";
+				for (var i = 0; i < data.length; i++){
+					var text = data[i][1] + '';
+					var metrics = ctx.measureText(text);
+					var xPos = (xaxis.p2c(data[i][0])+offset.left) - metrics.width/2;
+					var yPos = yaxis.p2c(data[i][1]) + offset.top - 5;
+					ctx.fillText(text, xPos, yPos);
+				}
+
+				// Monatsstatistik
+				var series3 = {
+						data: <?php echo $this->CounterMonthsData; ?>,
+						lines: {show: false},
+						color: "#006291",
+						bars: {show: true, barWidth: 0.5, align:'center', fill: 0.7 }
+					}
+
+				somePlot3 = $.plot("#CounterMonthsData", [series3], {
+					xaxis: {
+						ticks: <?php echo $this->CounterMonthsTicks; ?>
+					},
+					yaxis: { tickDecimals: 0, min: 0 },
+					grid: { borderColor: "#B5B5B5" }
+				});
+
+				var ctx = somePlot3.getCanvas().getContext("2d");
+				var data = somePlot3.getData()[0].data;
+				var xaxis = somePlot3.getXAxes()[0];
+				var yaxis = somePlot3.getYAxes()[0];
+				var offset = somePlot3.getPlotOffset();
+				ctx.font = "10px 'Verdana'";
+				ctx.fillStyle = "black";
+				for (var i = 0; i < data.length; i++){
+					var text = data[i][1] + '';
+					var metrics = ctx.measureText(text);
+					var xPos = (xaxis.p2c(data[i][0])+offset.left) - metrics.width/2;
+					var yPos = yaxis.p2c(data[i][1]) + offset.top - 5;
+					ctx.fillText(text, xPos, yPos);
+				}
+			});
+		})(jQuery);
+
+		</script>
+
+		<div class="fhcounter-container">
+			<h2>Zugriffe letzte <?php echo $this->CounterHoursValues; ?> Stunden</h2>
+			<div id="CounterHoursData" class="fhcounter-placeholder"></div>
+		</div>
+
+		<div class="fhcounter-container">
+			<h2>Zugriffe letzte <?php echo $this->CounterDaysValues; ?> Tage</h2>
+			<div id="CounterDaysData" class="fhcounter-placeholder"></div>
+		</div>
+
+		<div class="fhcounter-container">
+			<h2>Zugriffe letzte <?php echo $this->CounterMonthsValues; ?> Monate</h2>
+			<div id="CounterMonthsData" class="fhcounter-placeholder"></div>
+		</div>
+	<?php endif; ?>
+
+</div>

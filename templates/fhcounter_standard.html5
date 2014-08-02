@@ -1,0 +1,14 @@
+<div class="mod_counter <?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
+	<?php if ($this->headline): ?>
+		<<?php echo $this->hl; ?>><?php echo $this->headline; ?></<?php echo $this->hl; ?>>
+	<?php endif; ?>
+
+	<div class="fhcounter_online_label">Jetzt online:</div><div class="fhcounter_online"><?php echo $this->CounterOnline; ?></div>
+	<div class="fhcounter_toponline_label">Online Spitze:</div><div class="fhcounter_toponline"><?php echo $this->CounterTopOnlineCount; ?> am <?php echo date("d.m.Y",$this->CounterTopOnlineTime); ?></div>
+	<div class="fhcounter_thisday_label">Besucher heute:</div><div class="fhcounter_thisday"><?php echo $this->CounterThisDay; ?></div>
+	<div class="fhcounter_yesterday_label">Besucher gestern:</div><div class="fhcounter_yesterday"><?php echo $this->CounterYesterday; ?></div>
+	<div class="fhcounter_all_label">Besucher gesamt:</div><div class="fhcounter_all"><?php echo $this->CounterAll; ?></div>
+	<div class="fhcounter_average_label">Besucher pro Tag:</div><div class="fhcounter_average">Ø <?php echo $this->CounterAverage; ?></div>
+	<div class="fhcounter_starttime_label">Zählung seit:</div><div class="fhcounter_starttime"><?php echo date("d.m.Y",$this->CounterStarttime); ?></div>
+ 
+</div>

@@ -1,0 +1,71 @@
+<div class="mod_counter <?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
+	<?php if ($this->headline): ?>
+		<<?php echo $this->hl; ?>><?php echo $this->headline; ?></<?php echo $this->hl; ?>>
+	<?php endif; ?>
+
+	<h2>Zugriffe auf diese Seite</h2>
+	<ul>
+		<li><label>Abfragezeit:</label> <?php echo $this->PageCounterDuration; ?> sec</li>
+		<li><label>Zugriffe gesamt:</label> <?php echo $this->PageCounterAll; ?></li>
+		<li><label>Zugriffe dieses Jahr:</label> <?php echo $this->PageCounterThisYear; ?></li>
+		<li><label>Zugriffe dieser Monat:</label> <?php echo $this->PageCounterThisMonth; ?></li>
+		<li><label>Zugriffe letzter Monat:</label> <?php echo $this->PageCounterLastMonth; ?></li>
+		<li><label>Zugriffe heute:</label> <?php echo $this->PageCounterThisDay; ?></li>
+		<li><label>Zugriffe gestern:</label> <?php echo $this->PageCounterYesterday; ?></li>
+		<li><label>Zugriffe diese Stunde:</label> <?php echo $this->PageCounterThisHour; ?></li>
+		<li><?php if($this->PageCounterCheck): ?>Ihr Zugriff wurde gezählt.<?php else: ?>Ihr Zugriff wurde <b>nicht</b> gezählt.<?php endif; ?></li>
+	</ul>
+
+	<?php if ($this->ArticleCounterActive): ?>
+		<h2>Zugriffe auf diesen Artikel</h2>
+		<ul>
+			<li><label>Abfragezeit:</label> <?php echo $this->ArticleCounterDuration; ?> sec</li>
+			<li><label>Zugriffe gesamt:</label> <?php echo $this->ArticleCounterAll; ?></li>
+			<li><label>Zugriffe dieses Jahr:</label> <?php echo $this->ArticleCounterThisYear; ?></li>
+			<li><label>Zugriffe dieser Monat:</label> <?php echo $this->ArticleCounterThisMonth; ?></li>
+			<li><label>Zugriffe letzter Monat:</label> <?php echo $this->ArticleCounterLastMonth; ?></li>
+			<li><label>Zugriffe heute:</label> <?php echo $this->ArticleCounterThisDay; ?></li>
+			<li><label>Zugriffe gestern:</label> <?php echo $this->ArticleCounterYesterday; ?></li>
+			<li><label>Zugriffe diese Stunde:</label> <?php echo $this->ArticleCounterThisHour; ?></li>
+			<li><?php if($this->ArticleCounterCheck): ?>Ihr Zugriff wurde gezählt.<?php else: ?>Ihr Zugriff wurde <b>nicht</b> gezählt.<?php endif; ?></li>
+		</ul>
+	<?php endif; ?>
+
+	<?php if ($this->NewsCounterActive): ?>
+		<h2>Zugriffe auf diese Nachricht</h2>
+		<ul>
+			<li><label>Abfragezeit:</label> <?php echo $this->NewsCounterDuration; ?> sec</li>
+			<li><label>Zugriffe gesamt:</label> <?php echo $this->NewsCounterAll; ?></li>
+			<li><label>Zugriffe dieses Jahr:</label> <?php echo $this->NewsCounterThisYear; ?></li>
+			<li><label>Zugriffe dieser Monat:</label> <?php echo $this->NewsCounterThisMonth; ?></li>
+			<li><label>Zugriffe letzter Monat:</label> <?php echo $this->NewsCounterLastMonth; ?></li>
+			<li><label>Zugriffe heute:</label> <?php echo $this->NewsCounterThisDay; ?></li>
+			<li><label>Zugriffe gestern:</label> <?php echo $this->NewsCounterYesterday; ?></li>
+			<li><label>Zugriffe diese Stunde:</label> <?php echo $this->NewsCounterThisHour; ?></li>
+			<li><?php if($this->NewsCounterCheck): ?>Ihr Zugriff wurde gezählt.<?php else: ?>Ihr Zugriff wurde <b>nicht</b> gezählt.<?php endif; ?></li>
+		</ul>
+	<?php endif; ?>
+
+	<h2>Zugriffe laut Standardcounter</h2>
+	<ul>
+		<li><label>Quelle:</label> <?php echo $this->CounterSource; ?></li>
+		<li><label>Abfragezeit:</label> <?php echo $this->CounterDuration; ?> sec</li>
+		<li><label>Zugriffe gesamt:</label> <?php echo $this->CounterAll; ?></li>
+		<li><label>Zugriffe dieses Jahr:</label> <?php echo $this->CounterThisYear; ?></li>
+		<li><label>Zugriffe dieser Monat:</label> <?php echo $this->CounterThisMonth; ?></li>
+		<li><label>Zugriffe letzter Monat:</label> <?php echo $this->CounterLastMonth; ?></li>
+		<li><label>Zugriffe heute:</label> <?php echo $this->CounterThisDay; ?></li>
+		<li><label>Zugriffe gestern:</label> <?php echo $this->CounterYesterday; ?></li>
+		<li><label>Zugriffe diese Stunde:</label> <?php echo $this->CounterThisHour; ?></li>
+		<li><?php if($this->CounterCheck): ?>Ihr Zugriff wurde gezählt.<?php else: ?>Ihr Zugriff wurde <b>nicht</b> gezählt.<?php endif; ?></li>
+	</ul>
+
+	<p>
+		<?php echo $this->content; ?>
+	</p>
+
+	<?php if ($this->debuginfo): ?>
+		<?php echo $this->debuginfo; ?>
+	<?php endif; ?>
+
+</div>

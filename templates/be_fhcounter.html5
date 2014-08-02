@@ -1,0 +1,6 @@
+<?php if ($this->wildcard): ?>
+	<div class="tl_gray">
+		<?php echo $this->wildcard; ?><br />
+		<?php echo $this->title; ?> (ID: <?php echo $this->id; ?>)
+	</div>
+<?php endif; ?>
