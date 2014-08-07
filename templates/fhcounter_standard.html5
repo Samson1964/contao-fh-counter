@@ -1,3 +1,4 @@
+<!-- indexer::stop -->
 <div class="mod_counter <?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
 	<?php if ($this->headline): ?>
 		<<?php echo $this->hl; ?>><?php echo $this->headline; ?></<?php echo $this->hl; ?>>
@@ -12,3 +13,4 @@
 	<div class="fhcounter_starttime_label">Zählung seit:</div><div class="fhcounter_starttime"><?php echo date("d.m.Y",$this->CounterStarttime); ?></div>
  
 </div>
+<!-- indexer::continue -->

@@ -1,3 +1,4 @@
+<!-- indexer::stop -->
 <div class="fhcounter_diagramme <?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="clear:both; <?php echo $this->style; ?>"<?php endif; ?>>
 
 	<?php if ($this->headline): ?>
@@ -140,3 +141,4 @@
 	<?php endif; ?>
 
 </div>
+<!-- indexer::continue -->
