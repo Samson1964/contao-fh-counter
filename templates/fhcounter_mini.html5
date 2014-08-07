@@ -1,7 +1,10 @@
 <!-- indexer::stop -->
-<div class="fhcounter_mini <?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
-	<span title="Anzahl der Zugriffe insgesamt">Σ <?php echo $this->CounterAll; ?></span> |
-	<span title="Anzahl der Zugriffe gestern">G <?php echo $this->CounterYesterday; ?></span> |
-	<span title="Anzahl der Zugriffe heute">H <?php echo $this->CounterThisDay; ?></span>
-</div>
+<?php if($this->ViewDefault): ?>
+	<!-- Ausgabe Defaultzähler Mini-Version -->
+	<div class="fhcounter_mini <?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
+		<span title="Anzahl der Zugriffe insgesamt">Σ <?php echo $this->CounterAll; ?></span> |
+		<span title="Anzahl der Zugriffe gestern">G <?php echo $this->CounterYesterday; ?></span> |
+		<span title="Anzahl der Zugriffe heute">H <?php echo $this->CounterThisDay; ?></span>
+	</div>
+<?php endif; ?>
 <!-- indexer::continue -->
