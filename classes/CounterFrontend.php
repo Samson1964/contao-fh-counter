@@ -88,7 +88,7 @@ class CounterFrontend extends \Module
 		$this->Template->ViewTables = $this->fhc_view_tables;
 
 		// Zählerwerte tl_page in das Template schreiben
-		if($GLOBALS['fhcounter']['tl_page'] && $this->fhc_view_pages)
+		if($GLOBALS['fhcounter']['tl_page'] && $this->Template->ViewPages)
 		{
 			// Zählerwerte zuweisen
 			$this->Template->PageCounterAll = 0 + $GLOBALS['fhcounter']['tl_page']['counter']["all"];
@@ -114,7 +114,7 @@ class CounterFrontend extends \Module
 		}
 
 		// Zählerwerte tl_article in das Template schreiben
-		if($GLOBALS['fhcounter']['tl_article'] && $this->fhc_view_articles)
+		if($GLOBALS['fhcounter']['tl_article'] && $this->Template->ViewArticles)
 		{
 			// Zählerwerte zuweisen
 			$this->Template->ArticleCounterAll = 0 + $GLOBALS['fhcounter']['tl_article']['counter']["all"];
@@ -140,7 +140,7 @@ class CounterFrontend extends \Module
 		}
 
 		// Zählerwerte tl_news in das Template schreiben
-		if($GLOBALS['fhcounter']['tl_news'] && $this->fhc_view_news)
+		if($GLOBALS['fhcounter']['tl_news'] && $this->Template->ViewNews)
 		{
 			// Zählerwerte zuweisen
 			$this->Template->NewsCounterAll = 0 + $GLOBALS['fhcounter']['tl_news']['counter']["all"];
@@ -209,7 +209,7 @@ class CounterFrontend extends \Module
 				$this->Template->CounterTopOnlineCount = number_format($this->Template->CounterTopOnlineCount,0,",",".");
 				$this->Template->CounterAverage = number_format($this->Template->CounterAverage,0,",",".");
 			}
-			if($GLOBALS['fhcounter']['tl_page'] && $this->fhc_view_pages)
+			if($GLOBALS['fhcounter']['tl_page'] && $this->Template->ViewPages)
 			{
 				// Seiten-Zähler
 				$this->Template->PageCounterAll = number_format($this->Template->PageCounterAll,0,",",".");
@@ -224,7 +224,7 @@ class CounterFrontend extends \Module
 				$this->Template->PageCounterTopOnlineCount = number_format($this->Template->PageCounterTopOnlineCount,0,",",".");
 				$this->Template->PageCounterAverage = number_format($this->Template->PageCounterAverage,0,",",".");
 			}
-			if($GLOBALS['fhcounter']['tl_article'] && $this->fhc_view_articles)
+			if($GLOBALS['fhcounter']['tl_article'] && $this->Template->ViewArticles)
 			{
 				// Artikel-Zähler
 				$this->Template->ArticleCounterAll = number_format($this->Template->ArticleCounterAll,0,",",".");
@@ -239,7 +239,7 @@ class CounterFrontend extends \Module
 				$this->Template->ArticleCounterTopOnlineCount = number_format($this->Template->ArticleCounterTopOnlineCount,0,",",".");
 				$this->Template->ArticleCounterAverage = number_format($this->Template->ArticleCounterAverage,0,",",".");
 			}
-			if($GLOBALS['fhcounter']['tl_news'] && $this->fhc_view_news)
+			if($GLOBALS['fhcounter']['tl_news'] && $this->Template->ViewNews)
 			{
 				// Nachrichten-Zähler
 				$this->Template->NewsCounterAll = number_format($this->Template->NewsCounterAll,0,",",".");
@@ -256,7 +256,7 @@ class CounterFrontend extends \Module
 			}
 		}
 
-		if($this->fhc_view_diagrams)
+		if($this->Template->ViewDiagrams)
 		{
 			// Letzte 24 Stunden ausgeben
 			$nr = 0; $values = array(); $ticks = array();
