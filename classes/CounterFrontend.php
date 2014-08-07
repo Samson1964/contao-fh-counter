@@ -86,6 +86,7 @@ class CounterFrontend extends \Module
 		$this->Template->ViewDebuginfo = $this->fhc_infos_debug;
 		$this->Template->ViewDiagrams = $this->fhc_view_diagrams;
 		$this->Template->ViewTables = $this->fhc_view_tables;
+		$debuginfo = array();
 
 		// Zählerwerte tl_page in das Template schreiben
 		if($GLOBALS['fhcounter']['tl_page'] && $this->Template->ViewPages)
@@ -111,6 +112,13 @@ class CounterFrontend extends \Module
 			$this->Template->PageCounterTopOnlineTime = $GLOBALS['fhcounter']['tl_page']['toponline']['time'];
 			// Durchschnitt je Tag ermitteln
 			$this->Template->PageCounterAverage = sprintf('%01.0f',$GLOBALS['fhcounter']['tl_page']['totalhits'] / (($GLOBALS['fhcounter']['tl_page']['tstamp'] - $GLOBALS['fhcounter']['tl_page']['starttime']) / 86400));
+			// Besucher gezählt?
+			$this->Template->PageCounterCheck = $GLOBALS['fhcounter']['tl_page']['counting'];
+		}
+		else
+		{
+			// Kein Zähler vorhanden, dann Ausgabe unterdrücken
+			$this->Template->ViewPages = false;
 		}
 
 		// Zählerwerte tl_article in das Template schreiben
@@ -137,6 +145,13 @@ class CounterFrontend extends \Module
 			$this->Template->ArticleCounterTopOnlineTime = $GLOBALS['fhcounter']['tl_article']['toponline']['time'];
 			// Durchschnitt je Tag ermitteln
 			$this->Template->ArticleCounterAverage = sprintf('%01.0f',$GLOBALS['fhcounter']['tl_article']['totalhits'] / (($GLOBALS['fhcounter']['tl_article']['tstamp'] - $GLOBALS['fhcounter']['tl_article']['starttime']) / 86400));
+			// Besucher gezählt?
+			$this->Template->ArticleCounterCheck = $GLOBALS['fhcounter']['tl_article']['counting'];
+		}
+		else
+		{
+			// Kein Zähler vorhanden, dann Ausgabe unterdrücken
+			$this->Template->ViewArticles = false;
 		}
 
 		// Zählerwerte tl_news in das Template schreiben
@@ -163,6 +178,13 @@ class CounterFrontend extends \Module
 			$this->Template->NewsCounterTopOnlineTime = $GLOBALS['fhcounter']['tl_news']['toponline']['time'];
 			// Durchschnitt je Tag ermitteln
 			$this->Template->NewsCounterAverage = sprintf('%01.0f',$GLOBALS['fhcounter']['tl_news']['totalhits'] / (($GLOBALS['fhcounter']['tl_news']['tstamp'] - $GLOBALS['fhcounter']['tl_news']['starttime']) / 86400));
+			// Besucher gezählt?
+			$this->Template->NewsCounterCheck = $GLOBALS['fhcounter']['tl_news']['counting'];
+		}
+		else
+		{
+			// Kein Zähler vorhanden, dann Ausgabe unterdrücken
+			$this->Template->ViewNews = false;
 		}
 
 		// Zählerwerte default in das Template schreiben
@@ -189,6 +211,13 @@ class CounterFrontend extends \Module
 			$this->Template->CounterTopOnlineTime = $GLOBALS['fhcounter']['default']['toponline']['time'];
 			// Durchschnitt je Tag ermitteln
 			$this->Template->CounterAverage = sprintf('%01.0f',$GLOBALS['fhcounter']['default']['totalhits'] / (($GLOBALS['fhcounter']['default']['tstamp'] - $GLOBALS['fhcounter']['default']['starttime']) / 86400));
+			// Besucher gezählt?
+			$this->Template->CounterCheck = $GLOBALS['fhcounter']['tl_default']['counting'];
+		}
+		else
+		{
+			// Kein Zähler vorhanden, dann Ausgabe unterdrücken
+			$this->Template->ViewDefault = false;
 		}
 
 		// Template-Variablen ggfs. Tausender-Trennzeichen hinzufügen
@@ -254,6 +283,21 @@ class CounterFrontend extends \Module
 				$this->Template->NewsCounterTopOnlineCount = number_format($this->Template->NewsCounterTopOnlineCount,0,",",".");
 				$this->Template->NewsCounterAverage = number_format($this->Template->NewsCounterAverage,0,",",".");
 			}
+		}
+
+		// Debuginfos ergänzen
+		if($this->Template->ViewDebuginfo)
+		{
+			($GLOBALS['fhcounter']['tl_page']['counting']) ? $debuginfo['tl_page']['Besucher gezählt'] = "Ja" : $debuginfo['tl_page']['Besucher gezählt'] = "Nein";
+			$debuginfo['tl_page']['Letzte Aktualisierung'] = date("d.m.Y H:i:s", $GLOBALS['fhcounter']['tl_page']['tstamp']);
+			$debuginfo['tl_page']['Erststart Zähler'] = date("d.m.Y H:i:s", $GLOBALS['fhcounter']['tl_page']['starttime']);
+			$debuginfo['tl_page']['Name der Quelltabelle'] = $GLOBALS['fhcounter']['tl_page']['source'];
+			$debuginfo['tl_page']['ID in Quelltabelle'] = $GLOBALS['fhcounter']['tl_page']['pid'];
+			$debuginfo['tl_page']['Gesamtzugriffe'] = $GLOBALS['fhcounter']['tl_page']['totalhits'];
+			$debuginfo['tl_page']['Letzte Zählung'] = date("d.m.Y H:i:s", $GLOBALS['fhcounter']['tl_page']['lastcounting']);
+			$debuginfo['tl_page']['Letzter Besucher'] = $GLOBALS['fhcounter']['tl_page']['lastip'];
+			$debuginfo['tl_page']['Topbesucher gleichzeitig'] = $GLOBALS['fhcounter']['tl_page']['toponline']['count'] . " am " . date("d.m.Y H:i:s", $GLOBALS['fhcounter']['tl_page']['toponline']['time']);
+			$this->Template->Debuginfo = $debuginfo;
 		}
 
 		if($this->Template->ViewDiagrams)

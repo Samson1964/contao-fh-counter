@@ -11,7 +11,6 @@
 	<?php if($this->ViewPages): ?>
 		<h2>Zugriffe auf diese Seite</h2>
 		<ul>
-			<li><label>Abfragezeit:</label> <?php echo $this->PageCounterDuration; ?> sec</li>
 			<li><label>Zugriffe gesamt:</label> <?php echo $this->PageCounterAll; ?></li>
 			<li><label>Zugriffe dieses Jahr:</label> <?php echo $this->PageCounterThisYear; ?></li>
 			<li><label>Zugriffe dieser Monat:</label> <?php echo $this->PageCounterThisMonth; ?></li>
@@ -26,7 +25,6 @@
 	<?php if ($this->ViewArticles): ?>
 		<h2>Zugriffe auf diesen Artikel</h2>
 		<ul>
-			<li><label>Abfragezeit:</label> <?php echo $this->ArticleCounterDuration; ?> sec</li>
 			<li><label>Zugriffe gesamt:</label> <?php echo $this->ArticleCounterAll; ?></li>
 			<li><label>Zugriffe dieses Jahr:</label> <?php echo $this->ArticleCounterThisYear; ?></li>
 			<li><label>Zugriffe dieser Monat:</label> <?php echo $this->ArticleCounterThisMonth; ?></li>
@@ -41,7 +39,6 @@
 	<?php if ($this->ViewNews): ?>
 		<h2>Zugriffe auf diese Nachricht</h2>
 		<ul>
-			<li><label>Abfragezeit:</label> <?php echo $this->NewsCounterDuration; ?> sec</li>
 			<li><label>Zugriffe gesamt:</label> <?php echo $this->NewsCounterAll; ?></li>
 			<li><label>Zugriffe dieses Jahr:</label> <?php echo $this->NewsCounterThisYear; ?></li>
 			<li><label>Zugriffe dieser Monat:</label> <?php echo $this->NewsCounterThisMonth; ?></li>
@@ -57,7 +54,6 @@
 		<h2>Zugriffe laut Standardcounter</h2>
 		<ul>
 			<li><label>Quelle:</label> <?php echo $this->CounterSource; ?></li>
-			<li><label>Abfragezeit:</label> <?php echo $this->CounterDuration; ?> sec</li>
 			<li><label>Zugriffe gesamt:</label> <?php echo $this->CounterAll; ?></li>
 			<li><label>Zugriffe dieses Jahr:</label> <?php echo $this->CounterThisYear; ?></li>
 			<li><label>Zugriffe dieser Monat:</label> <?php echo $this->CounterThisMonth; ?></li>
