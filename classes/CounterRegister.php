@@ -145,6 +145,14 @@ class CounterRegister extends \Module
 				$lastcounting = $objZaehler->lastcounting;
 				$starttime = $objZaehler->starttime;
 				$lastip = $objZaehler->lastip;
+				// Prüfen auf doppelte Datensätze
+				if($objZaehler->numRows > 1)
+				{
+					// Restliche Datensätze löschen
+					while($objZaehler->next()) {
+						$ergebnis = $this->Database->prepare('DELETE FROM tl_fh_counter WHERE id=?')->execute($objZaehler->id);
+					}
+				}
 			}
 			else
 			{
