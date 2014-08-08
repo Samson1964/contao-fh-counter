@@ -12,7 +12,7 @@
 /**
  * Add palette to tl_module
  */
-$GLOBALS['TL_DCA']['tl_module']['palettes']['fhcounter_register'] = '{title_legend},name,type;{counter_legend:hide},fhc_register_pages,fhc_register_articles,fhc_register_news,fhc_onlinetime,fhc_registernewtime,fhc_register_sessions;{expert_legend:hide},cssID,align,space';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['fhcounter_register'] = '{title_legend},name,type;{counter_legend:hide},fhc_register_pages,fhc_register_articles,fhc_register_news,fhc_onlinetime,fhc_registernewtime,fhc_register_sessions,fhc_register_be_user;{expert_legend:hide},cssID,align,space';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['fhcounter_view'] = '{title_legend},name,headline,type;{info_legend:hide},fhc_view_pages,fhc_view_articles,fhc_view_news,fhc_infos_counter,fhc_infos_debug,fhc_view_diagrams,fhc_view_tables,fhc_1000_separator;{template_legend:hide},fhc_template;{protected_legend:hide},protected;{expert_legend:hide},cssID,align,space';
 
 // Zählung tl_page ja/nein
@@ -155,6 +155,16 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['fhc_view_tables'] = array
 $GLOBALS['TL_DCA']['tl_module']['fields']['fhc_register_sessions'] = array
 (
 	'label'         => &$GLOBALS['TL_LANG']['tl_module']['fhc_register_sessions'],
+	'inputType'     => 'checkbox',
+	'eval'          => array('tl_class' => 'w50','isBoolean' => true),
+	'sql'           => "char(1) NOT NULL default ''",
+);
+
+// Eingeloggte BE-Benutzer berücksichtigen
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['fhc_register_be_user'] = array
+(
+	'label'         => &$GLOBALS['TL_LANG']['tl_module']['fhc_register_be_user'],
 	'inputType'     => 'checkbox',
 	'eval'          => array('tl_class' => 'w50','isBoolean' => true),
 	'sql'           => "char(1) NOT NULL default ''",

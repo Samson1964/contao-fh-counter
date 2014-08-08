@@ -72,6 +72,22 @@ class CounterRegister extends \Module
 		$gmonat = date("n",$gestern); // Monat einstellig
 		$gtag = date("j",$gestern);	// Tag einstellig
 
+		// Zählstatus anpassen, je nachdem ob BE-Benutzer gezählt werden oder nicht
+		if(!$this->fhc_register_be_user)
+		{
+			// BE-Benutzer soll nicht mitgezählt werden, deshalb Session-ID prüfen
+			$objSession = $this->Database->prepare('SELECT * FROM tl_session WHERE name=? AND sessionID=?')->execute('BE_USER_AUTH', session_id()); 
+			if($objSession->name == 'BE_USER_AUTH')
+			{
+				// BE-Benutzer ist eingeloggt, deshalb Zählung deaktivieren
+				$this->fhc_register_pages = false;
+				$this->fhc_register_articles = false;
+				$this->fhc_register_news = false;
+				//echo "BE eingeloggt";
+			}
+			//else echo "BE nicht eingeloggt";
+		}
+
 		/*****************************************
 		****** Zählung der Seite (tl_page) *******
 		******************************************/
@@ -124,6 +140,7 @@ class CounterRegister extends \Module
 	 * @param $source_id: ID in Tabelle $source_name
 	 * @param $source_name: tl_page, tl_articles oder tl_news
 	 * @param $source_register: Zählen ja/nein
+	 * @param $register_be_user: Zählen ja/nein
 	 *
 	 * @return: -
 	 */
@@ -166,6 +183,7 @@ class CounterRegister extends \Module
 				$starttime = 0;
 				$lastip = '';
 			}
+
 
 			// Zähler aktualisieren
 			if($source_register)

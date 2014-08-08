@@ -27,6 +27,7 @@ $GLOBALS['TL_LANG']['tl_module']['fhc_register_news'] = array('Nachrichtenzugrif
 $GLOBALS['TL_LANG']['tl_module']['fhc_onlinetime'] = array('Onlinezeit in Sekunden', 'Der Besucher gilt nach dieser Zeit als nicht mehr online.');
 $GLOBALS['TL_LANG']['tl_module']['fhc_registernewtime'] = array('Zählsperre in Sekunden', 'Der Besucher wird für diese Zeit gesperrt und nicht neu gezählt.');
 $GLOBALS['TL_LANG']['tl_module']['fhc_register_sessions'] = array('Session-Cookie benutzen', 'Für die Identifizierung der Besucher Session-Cookies statt IP-Adressen benutzen.');
+$GLOBALS['TL_LANG']['tl_module']['fhc_register_be_user'] = array('BE-Benutzer berücksichtigen', 'Wenn ein Benutzer im Backend eingeloggt ist, soll dieser mitgezählt werden bei einem Frontendaufruf.');
 
 /**
  * Felder für Ausgabemodul
