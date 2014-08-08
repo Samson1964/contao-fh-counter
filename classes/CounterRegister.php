@@ -30,6 +30,9 @@ class CounterRegister extends \Module
 	var $monat;
 	var $tag;
 	var $stunde;
+	
+	// Backend-Status
+	var $be_user;
 
 	/**
 	 * Display a wildcard in the back end
@@ -73,6 +76,7 @@ class CounterRegister extends \Module
 		$gtag = date("j",$gestern);	// Tag einstellig
 
 		// Zählstatus anpassen, je nachdem ob BE-Benutzer gezählt werden oder nicht
+		$this->be_user = false;
 		if(!$this->fhc_register_be_user)
 		{
 			// BE-Benutzer soll nicht mitgezählt werden, deshalb Session-ID prüfen
@@ -83,6 +87,7 @@ class CounterRegister extends \Module
 				$this->fhc_register_pages = false;
 				$this->fhc_register_articles = false;
 				$this->fhc_register_news = false;
+				$this->be_user = true;
 				//echo "BE eingeloggt";
 			}
 			//else echo "BE nicht eingeloggt";
@@ -140,7 +145,6 @@ class CounterRegister extends \Module
 	 * @param $source_id: ID in Tabelle $source_name
 	 * @param $source_name: tl_page, tl_articles oder tl_news
 	 * @param $source_register: Zählen ja/nein
-	 * @param $register_be_user: Zählen ja/nein
 	 *
 	 * @return: -
 	 */
@@ -300,9 +304,9 @@ class CounterRegister extends \Module
 					/**********************************
 					 Datenbanktabelle aktualisieren
 					 **********************************/
-					if($objZaehler->id)
+					if($objZaehler->id && !$this->be_user)
 					{
-						// Zähler vorhanden
+						// Zähler vorhanden und BE-Benutzer ignorieren
 						$set = array('tstamp'       => $this->zeit,
 									 'lastip'       => $this->ip,
 									 'toponline'    => serialize($array_toponline),
