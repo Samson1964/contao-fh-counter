@@ -345,6 +345,11 @@ class CounterRegister extends \Module
 			$GLOBALS['fhcounter']['default']['counter'] = $GLOBALS['fhcounter'][$source_name]['counter'];
 			$GLOBALS['fhcounter']['default']['online'] = $GLOBALS['fhcounter'][$source_name]['online'];
 		}
+		else
+		{
+			// source_id ist leer, Fehler loggen
+			$this->log('FH-Counter source_id='.$source_id.', source_name='.$source_name.', URI='.$_SERVER['REQUEST_URI'], __METHOD__, TL_ERROR);
+		}
 	}
 
 }
