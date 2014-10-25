@@ -56,7 +56,7 @@ class CounterFrontend extends \Module
 	 */
 	protected function compile()
 	{
-		//echo "<pre>";
+		//echo "<pre>DEBUG";
 		//print_r($GLOBALS["fhcounter"]);
 		//echo "</pre>";
 

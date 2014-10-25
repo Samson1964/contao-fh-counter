@@ -19,6 +19,7 @@ ClassLoader::addClasses(array
 	// Classes
 	'CounterFrontend' => 'system/modules/fh-counter/classes/CounterFrontend.php',
 	'CounterRegister' => 'system/modules/fh-counter/classes/CounterRegister.php',
+	'CounterTag'      => 'system/modules/fh-counter/classes/CounterTag.php',
 ));
 
 

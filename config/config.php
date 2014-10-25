@@ -16,3 +16,7 @@ $GLOBALS['FE_MOD']['fhcounter'] = array
 	'fhcounter_register' => 'CounterRegister',
 	'fhcounter_view' => 'CounterFrontend',
 ); 
+
+$GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('CounterTag', 'fhcounter');
+$GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('CounterTag', 'fhcounter_view');
+

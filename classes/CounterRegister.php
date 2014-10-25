@@ -11,7 +11,6 @@
  * @copyright Frank Hoppe 2014
  */
 
-
 /**
  * Class CounterRegister
  *
