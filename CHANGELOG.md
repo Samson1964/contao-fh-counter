@@ -1,5 +1,10 @@
 # FH-Counter Changelog
 
+## Version 1.1.1 (2015-05-16)
+
+- Fixed: Index für Spalten pid und source fehlte
+- Fixed: Spalte counter jetzt MEDIUMTEXT, da TEXT nur 65536 Zeichen aufnehmen kann
+
 ## Version 1.1.0 alpha1 (2014-10-25)
 
 - Einbau von Inserttags für Zähler und Ausgabe als Alternative

@@ -25,7 +25,9 @@ $GLOBALS['TL_DCA']['tl_fh_counter'] = array
 		(
 			'keys' => array
 			(
-				'id' => 'primary'
+				'id'     => 'primary',
+				'pid'    => 'index',
+				'source' => 'index'
 			)
 		)
 	),
@@ -86,7 +88,7 @@ $GLOBALS['TL_DCA']['tl_fh_counter'] = array
 		// Zähler (serialisiertes Array)
 		'counter' => array
 		(
-			'sql'                     => "text NULL"
+			'sql'                     => "mediumtext NULL"
 		),
 		// Besucher online (serialisiertes Array)
 		'online' => array
