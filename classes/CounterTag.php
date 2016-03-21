@@ -39,7 +39,7 @@ class CounterTag extends \Frontend
 	var $fhc_view_diagrams = true;
 	var $fhc_view_tables = false;
 
-	protected function fhcounter_view($strTag)
+	public function fhcounter_view($strTag)
 	{
 		$arrSplit = explode('::', $strTag);
 
@@ -96,7 +96,8 @@ class CounterTag extends \Frontend
 				$this->Template->PageCounterTopOnlineCount = $GLOBALS['fhcounter']['tl_page']['toponline']['count'];
 				$this->Template->PageCounterTopOnlineTime = $GLOBALS['fhcounter']['tl_page']['toponline']['time'];
 				// Durchschnitt je Tag ermitteln
-				$this->Template->PageCounterAverage = sprintf('%01.0f',$GLOBALS['fhcounter']['tl_page']['totalhits'] / (($GLOBALS['fhcounter']['tl_page']['tstamp'] - $GLOBALS['fhcounter']['tl_page']['starttime']) / 86400));
+				$divident = ($GLOBALS['fhcounter']['tl_page']['tstamp'] - $GLOBALS['fhcounter']['tl_page']['starttime']) / 86400;
+				$this->Template->PageCounterAverage = ($divident) ? sprintf('%01.0f',$GLOBALS['fhcounter']['tl_page']['totalhits'] / $divident) : '0';
 				// Besucher gezählt?
 				$this->Template->PageCounterCheck = $GLOBALS['fhcounter']['tl_page']['counting'];
 			}
@@ -129,7 +130,8 @@ class CounterTag extends \Frontend
 				$this->Template->ArticleCounterTopOnlineCount = $GLOBALS['fhcounter']['tl_article']['toponline']['count'];
 				$this->Template->ArticleCounterTopOnlineTime = $GLOBALS['fhcounter']['tl_article']['toponline']['time'];
 				// Durchschnitt je Tag ermitteln
-				$this->Template->ArticleCounterAverage = @sprintf('%01.0f',$GLOBALS['fhcounter']['tl_article']['totalhits'] / (($GLOBALS['fhcounter']['tl_article']['tstamp'] - $GLOBALS['fhcounter']['tl_article']['starttime']) / 86400));
+				$divident = ($GLOBALS['fhcounter']['tl_article']['tstamp'] - $GLOBALS['fhcounter']['tl_article']['starttime']) / 86400;
+				$this->Template->ArticleCounterAverage = ($divident) ? sprintf('%01.0f',$GLOBALS['fhcounter']['tl_article']['totalhits'] / $divident) : '0';
 				// Besucher gezählt?
 				$this->Template->ArticleCounterCheck = $GLOBALS['fhcounter']['tl_article']['counting'];
 			}
@@ -162,7 +164,8 @@ class CounterTag extends \Frontend
 				$this->Template->NewsCounterTopOnlineCount = $GLOBALS['fhcounter']['tl_news']['toponline']['count'];
 				$this->Template->NewsCounterTopOnlineTime = $GLOBALS['fhcounter']['tl_news']['toponline']['time'];
 				// Durchschnitt je Tag ermitteln
-				$this->Template->NewsCounterAverage = sprintf('%01.0f',$GLOBALS['fhcounter']['tl_news']['totalhits'] / (($GLOBALS['fhcounter']['tl_news']['tstamp'] - $GLOBALS['fhcounter']['tl_news']['starttime']) / 86400));
+				$divident = ($GLOBALS['fhcounter']['tl_news']['tstamp'] - $GLOBALS['fhcounter']['tl_news']['starttime']) / 86400;
+				$this->Template->NewsCounterAverage = ($divident) ? sprintf('%01.0f',$GLOBALS['fhcounter']['tl_news']['totalhits'] / $divident) : '0';
 				// Besucher gezählt?
 				$this->Template->NewsCounterCheck = $GLOBALS['fhcounter']['tl_news']['counting'];
 			}
@@ -371,7 +374,7 @@ class CounterTag extends \Frontend
 		}
 	}
 
-	protected function fhcounter($strTag)
+	public function fhcounter($strTag)
 	{
 		$arrSplit = explode('::', $strTag);
 

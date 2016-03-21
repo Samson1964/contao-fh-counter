@@ -1,5 +1,9 @@
 # FH-Counter Changelog
 
+## Version 1.1.2 (2016-03-21)
+
+- Fixed: Division durch Null in CounterTag.php
+
 ## Version 1.1.1 (2015-05-16)
 
 - Fixed: Index für Spalten pid und source fehlte

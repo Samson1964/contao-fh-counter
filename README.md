@@ -1,14 +1,17 @@
 # FH-Counter
-Ein Modul für Contao ab mindestens Version 3.1, welches die Zugriffe auf Seiten, Artikel und Nachrichten zählen kann.
+
+Ein Modul für Contao ab mindestens Version 3.1, welches die Zugriffe auf Seiten, Artikel und Nachrichten zählen kann.  
 Die hier vorliegende Version ist auf schachbund.de zwar schon im produktiven Einsatz, befindet sich aber noch in der Entwicklungsphase.
 
 ## Installation
+
 Das Modul muß im Verzeichnis system/modules/fh-counter installiert werden. Danach müssen Sie die Datenbankaktualisierung in Contao aufrufen, damit die Tabelle tl_fh_counter für den Zähler und die Felder in tl_module angelegt werden.
 
 ## Einbindung
+
 FH-Counter besteht aus einem Zähler- und einem Ausgabemodul. Das Zählermodul zählt die Zugriffe und muß **vor** dem Ausgabemodul im Seitenlayout oder in einer Seite eingebunden werden.
 
-Diese beiden Frontendmodule finden Sie im Bereich **FH-Counter** unter Themes -> Module. Das Zählermodul müssen Sie nur einmal einbinden, das Ausgabemodul können Sie an beliebig vielen Stellen mit verschiedenen Templates einbinden.
+Diese beiden Frontendmodule finden Sie im Bereich **FH-Counter** unter Themes -> Module. Das Zählermodul müssen Sie nur einmal einbinden, das Ausgabemodul können Sie an beliebig vielen Stellen mit verschiedenen Templates einbinden.  
 Das Zählermodul verwaltet die Daten in der Tabelle tl_fh_counter und schreibt zusätzlich die Daten der aktuellen Inhalte (Seite, Artikel, Nachricht) in $GLOBALS['fhcounter']. Dort werden sie vom Ausgabemodul weiter verwendet.
 
 ## Template-Variablen
@@ -43,7 +46,7 @@ Das Zählermodul verwaltet die Daten in der Tabelle tl_fh_counter und schreibt zu
 
 Das sind bei Weitem nicht alle Template-Variablen, aber die wichtigsten. Darüberhinaus sind die Templates noch nicht ausgereift und enthalten Fehler. Variablennamen können sich noch ändern oder werden nicht mehr benutzt.
 
-Den o.g. Variablennamen kann außerdem jeweils noch ein Präfix mitgegeben werden. So zeigt **PageCounterAverage** z.B. die durchschnittliche Besucherzahl je Tag für die aktive Seite, egal ob gerade ein Artikel oder eine Nachricht angezeigt wird. Die anderen Präfixe sind **Article** und **News**.
+Den o.g. Variablennamen kann außerdem jeweils noch ein Präfix mitgegeben werden. So zeigt **PageCounterAverage** z.B. die durchschnittliche Besucherzahl je Tag für die aktive Seite, egal ob gerade ein Artikel oder eine Nachricht angezeigt wird. Die anderen Präfixe sind **Article** und **News**.  
 Der allgemeine Zähler ohne Präfix gewichtet die anderen Zähler in der Reihenfolge Seite, Artikel, Nachricht. Der allgemeine Zähler wird also zuerst mit den Daten der Seite gefüllt und anschließend mit den Daten des Artikels überschrieben - falls überhaupt gerade ein Artikel angezeigt wird.
 
 ## Einstellungen von Contao
