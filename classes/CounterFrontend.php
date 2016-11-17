@@ -111,7 +111,7 @@ class CounterFrontend extends \Module
 			$this->Template->PageCounterTopOnlineCount = $GLOBALS['fhcounter']['tl_page']['toponline']['count'];
 			$this->Template->PageCounterTopOnlineTime = $GLOBALS['fhcounter']['tl_page']['toponline']['time'];
 			// Durchschnitt je Tag ermitteln
-			$this->Template->PageCounterAverage = sprintf('%01.0f',$GLOBALS['fhcounter']['tl_page']['totalhits'] / (($GLOBALS['fhcounter']['tl_page']['tstamp'] - $GLOBALS['fhcounter']['tl_page']['starttime']) / 86400));
+			//if($GLOBALS['fhcounter']['tl_page']['totalhits']) $this->Template->PageCounterAverage = sprintf('%01.0f',$GLOBALS['fhcounter']['tl_page']['totalhits'] / (($GLOBALS['fhcounter']['tl_page']['tstamp'] - $GLOBALS['fhcounter']['tl_page']['starttime']) / 86400));
 			// Besucher gezählt?
 			$this->Template->PageCounterCheck = $GLOBALS['fhcounter']['tl_page']['counting'];
 		}

@@ -372,6 +372,7 @@ class CounterTag extends \Frontend
 				return $this->Template->parse();
 			}
 		}
+		return false;
 	}
 
 	public function fhcounter($strTag)
